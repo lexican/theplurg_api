@@ -1,0 +1,27 @@
+{
+    // Editor
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+
+    // Formatter
+    "prettier.requireConfig": true,
+    "prettier.useEditorConfig": true,
+
+    // Language Config
+    "[javascript]": {
+        "editor.tabSize": 4
+    },
+    "[javascriptreact]": {
+        "editor.tabSize": 4
+    },
+    "[json]": {
+        "editor.tabSize": 4
+    },
+    "[typescript]": {
+        "editor.tabSize": 4
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 4
+    }
+}

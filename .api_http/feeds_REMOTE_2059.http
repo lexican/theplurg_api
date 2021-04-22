@@ -1,0 +1,14 @@
+@hostname = http://localhost:5000/
+@token = 00eebe90543da76457ac81aa8d8598:9b911c99561574039445d6f092df005c
+###
+
+GET {{hostname}}v1/nations/states HTTP/1.1
+content-type: application/json
+authorization: {{token}}
+abstract-data: {"last_id":1}
+###
+
+GET {{hostname}}v1/shop/get_all_shop_product HTTP/1.1
+content-type: application/json
+authorization: {{token}}
+abstract-data: {"shop_id":8}

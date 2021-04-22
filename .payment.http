@@ -1,0 +1,93 @@
+@hostname = http://localhost:5000/
+@token = 00eebe90543da76457ac81aa8d8598:9b911c99561574039445d6f092df005c
+###
+
+
+
+           
+
+###
+
+POST {{hostname}}v1/ewallet/pay HTTP/1.1
+content-type: application/json
+authorization: {{token}}
+
+{"card_number": "5531886652142950", 
+"cvv": "564", "expiry_month": "09", 
+"expiry_year":  "32", 
+"amount": "3000", 
+"fullname": "New Name", 
+"email": "lexican@gmail.com", 
+"phone_number": "07034291227" }
+
+###
+
+GET {{hostname}}v1/ewallet/banks/getAllBanks HTTP/1.1
+content-type: application/json
+authorization: {{token}}
+abstract-data: {"country": "NG" }
+
+
+###
+
+GET {{hostname}}v1/ewallet/banks/getAllBranches HTTP/1.1
+content-type: application/json
+authorization: {{token}}
+abstract-data: {"id": 6 }
+###
+
+POST {{hostname}v1/ewallet/chargecard HTTP/1.1
+content-type: application/json
+authorization: {{token}}
+
+{
+    "card_number": "5531886652142950",
+    "cvv": "564",
+    "expiry_month": "09",
+    "expiry_year": "21",
+    "currency": "NGN",
+    "amount": "100",
+    "redirect_url": "https://www.google.com",
+    "fullname": "Olufemi Obafunmiso",
+    "email": "olufemi@flw.com",
+    "phone_number": "0902620185",
+    "enckey": "611d0eda25a3c931863d92c4",
+    "tx_ref": "MC-32444ee--4eerye4euee3rerds4423e43e" // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
+ 
+}
+###
+
+
+POST {{hostname}v1/ewallet/chargebank HTTP/1.1
+content-type: application/json
+authorization: {{token}}
+
+{
+    "tx_ref": "MC-1585dshdhdsdv5050e8", //This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
+    "amount": "100", //This is the amount to be charged.
+    "account_bank": "044", //This is the Bank numeric code. You can get a list of supported banks and their respective codes Here: https://developer.flutterwave.com/v3.0/reference#get-all-banks
+    "account_number": "0690000037",
+    "currency": "NGN",
+    "email": "olufemi@flw.com",
+    "phone_number": "0902620185", //This is the phone number linked to the customer's mobile money account
+    "fullname": "Olufemi Obafunmiso"
+}
+
+###
+
+
+POST {{hostname}v1/ewallet/createOTP HTTP/1.1
+content-type: application/json
+authorization: {{token}}
+
+{
+    "length": 7,
+    "customer": { "name": "Kazan", "email": "kazan@mailinator.com", "phone": "2348131149273" },
+    "sender": "log t",
+    "send": true,
+    "medium": ["email", "whatsapp"],
+    "expiry": 5
+}
+
+###
+
